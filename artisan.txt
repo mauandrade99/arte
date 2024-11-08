@@ -1,0 +1,18 @@
+ php artisan make:seeder CpcrSeeder
+ 
+ php artisan migrate:fresh
+ 
+ 
+ php artisan route:list
+ 
+ 
+  php artisan make:model Cpcr -m -cr      (cria model e controler resouce)
+  
+  php artisan make:model Cpcr -mfscr
+  
+  php artisan db:seed
+  
+  
+ php artisan make:factory CpcrFactory
+ 
+  php artisan make:controller SiteController --resource

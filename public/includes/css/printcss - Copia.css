@@ -1,0 +1,95 @@
+#body body {
+  margin: 0;
+  padding: 0;
+  background-color: #FAFAFA;
+  font: 14pt "Tahoma";
+  -webkit-print-color-adjust: exact;
+}
+
+
+
+#body * {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#body .page {
+  width: 25cm;
+  min-height: 36.4cm;
+  padding: 1cm;
+  margin: 0;
+  border: 1px #D3D3D3 solid;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+ page-break-after: auto;
+}
+
+#body .subpage {
+  padding: 0.5cm;
+  border: 1px #AAAAAA solid;
+  height: 34.4cm;
+  width: 23cm;
+  outline: 1cm #DDDDDD solid;
+}
+
+
+
+#body table td {
+    border: hidden;
+}
+
+#body table img {
+	 min-width:100%;
+}
+
+#body .paciente td{
+	line-height:35px;
+	display:table-cell;
+	vertical-align:middle;
+	
+}
+
+#body .paciente span{
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-left: 50px;
+}
+
+#body .receita td{
+	line-height:auto;
+	display:table-cell;
+	vertical-align:top;
+
+}
+
+#body .receita span {
+	margin-left: 50px;
+	font-size: 1.2em !important;
+}
+
+#body .receita p {
+ font-size: 2px;
+}
+
+#body .extenso td{
+	line-height: 40px;
+	display:table-cell;
+	vertical-align:top;
+	text-align:right;
+}
+
+#body .extenso span{
+	font-size: 1.5em;
+	margin-left: 100px;
+}
+
+#body .header {
+	text-align:center;
+}
+
+
+
+
+
+

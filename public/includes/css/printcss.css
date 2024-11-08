@@ -1,0 +1,49 @@
+#body body {
+  font: 14pt "Tahoma";
+}
+
+#body * {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+
+
+#body .page {
+ page-break-after: auto;
+}
+
+#body .subpage {
+  
+}
+
+
+
+#body table td {
+    border: hidden;
+}
+
+#body table img {
+
+}
+
+
+#body .receita tr{
+	line-height:14px;
+	display:table-cell;
+	vertical-align:top;
+
+}
+
+#body .receita span {
+	margin-left: 50px;
+	font-size: 1.2em !important;
+}
+
+
+
+
+
+
+
+
