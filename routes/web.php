@@ -29,6 +29,9 @@ Route::get('/cpcr', [SiteController::class,'index'])->middleware(['auth', 'verif
 
 Route::get('/cpcr/{id}', [SiteController::class,'details'])->middleware(['auth', 'verified'])->name('site.details');
 
+Route::put('/cpcr/update/{id}', [SiteController::class,'updatedetails'])->middleware(['auth', 'verified'])->name('site.updatedetails');
+
+Route::get('/cpcr/delete/{id}', [SiteController::class,'delete'])->middleware(['auth', 'verified'])->name('site.delete');
 
 Route::get('/cpcrUser/{id}', [SiteController::class,'cpcrUser'])->middleware(['auth', 'verified'])->name('site.cpcrUser');
  

@@ -24,9 +24,18 @@
     </head>
     <body class="font-sans antialiased">
 
+        <div id="mymodal" class="modal">
+            <div class="modal-content">
+              <p class="message"></p>
+            </div>
+            <div class="modal-footer">
+              <span class="yes btn btn-primary">Sim</span>
+			        <span class="no btn btn-primary">Não</span>
+            </div>
+          </div>
+
         @include('layouts.navigation')
 
-           
         <!-- Page Content -->
         <main>
             @yield('content')
@@ -49,18 +58,8 @@
           <script type='text/javascript' src='/includes/plugins/form-colorpicker/js/bootstrap-colorpicker.js'></script>
           <script type="text/javascript" src='/includes/js/mdb/chart.min.js'></script>
           <script type="text/javascript" src='/includes/js/mdb/chartjs-plugin-datalabels.js'></script> 
-
-          <script type='text/javascript' src="/includes/js/app/system.js?8130"></script>
-
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-          <script>
-              $('.dropdown-trigger').dropdown();
-
-              function back() {
-                window.history.back();
-              }
-              
-          </script>
+          <script type='text/javascript' src="/includes/js/app/system.js?8130"></script>
 
           @yield('javascript')
 

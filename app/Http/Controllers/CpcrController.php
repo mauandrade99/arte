@@ -8,6 +8,8 @@ use \App\Models\cpcr;
 
 class CpcrController extends Controller
 {
+
+    protected $guarded = []; 
     /**
      * Display a listing of the resource.
      */

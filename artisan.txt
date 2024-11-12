@@ -36,6 +36,9 @@ git branch -M main
 git remote add origin https://github.com/mauandrade99/arte.git
 git push -u origin main
 
-git remote add origin https://github.com/mauandrade99/arte.git
+atualizar 
+
+git add .
+git commit -m "second commit"
 git branch -M main
 git push -u origin main

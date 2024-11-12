@@ -12,6 +12,8 @@ class Cpcr extends Model
 
     protected $table ='cpcr';
 
+    protected $guarded = []; 
+
     public function user()
     {
         
