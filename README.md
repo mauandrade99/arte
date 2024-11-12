@@ -66,3 +66,17 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 "# arte"  git init git add README.md git commit -m "first commit" git branch -M main git remote add origin https://github.com/mauandrade99/arte.git git push -u origin main
 "# arte" 
+
+
+Para Construir e popular a base teste rode os comandos abaixo:
+
+Senha padrao:
+123456
+
+Usuarios Admin: 
+arte@gmail.com
+mauricio.andrade46@gmail.com
+
+
+ php artisan migrate:fresh
+ php artisan db:seed

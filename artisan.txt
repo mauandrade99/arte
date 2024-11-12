@@ -1,3 +1,4 @@
+ php artisan make:seeder UserSeeder
  php artisan make:seeder CpcrSeeder
  
  php artisan migrate:fresh
@@ -6,13 +7,35 @@
  php artisan route:list
  
  
-  php artisan make:model Cpcr -m -cr      (cria model e controler resouce)
+ php artisan make:model Cpcr -m -cr      (cria model e controler resouce)
   
-  php artisan make:model Cpcr -mfscr
+ php artisan make:model Cpcr -mfscr
   
-  php artisan db:seed
+ php artisan db:seed
   
   
  php artisan make:factory CpcrFactory
  
-  php artisan make:controller SiteController --resource
+ php artisan make:controller SiteController --resource
+ 
+ composer require laravel/breeze --dev
+  
+  
+git init
+  
+git status
+  
+git add .
+  
+  
+echo "# arte" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/mauandrade99/arte.git
+git push -u origin main
+
+git remote add origin https://github.com/mauandrade99/arte.git
+git branch -M main
+git push -u origin main

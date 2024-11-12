@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Models\cpcr;
 use \App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -15,7 +16,7 @@ class SiteController extends Controller
     {
         $titulo = 'CPCR';
         $cpcrs = cpcr::paginate(10);
-
+       
         return view('site.cpcr',compact('cpcrs','titulo'));
     }
 
