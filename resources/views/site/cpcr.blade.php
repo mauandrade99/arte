@@ -7,7 +7,8 @@
 @section('content')
     @if ( Auth::user()->admin == '1' )
         <div style="margin-top:40px;margin-left:40px" >
-        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Usuários <i class="material-icons right">expand_more</i></a>
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Usuários <i class="material-icons right">expand_more</i></a>
+            <a href="{{ route('site.details',0)}}" class="btn" id="add">Incluir <i class="material-icons right">add</i></a>
         </div>
     
         <!-- Dropdown Structure -->
@@ -17,15 +18,13 @@
             <li><a href="{{ route('site.cpcrUser',$usuarioMenu->id)}}">{{$usuarioMenu->name}}</a></li>
             @endforeach
         </ul>
-    
+    @else
+        <div style="margin-top:40px;margin-left:40px" >
+            <a href="{{ route('site.details',0)}}" class="btn" id="add">Incluir <i class="material-icons right">add</i></a>
+        </div>
     @endif
 
-    <div class="col-sm-12">
-        <div id="btcontrole" class="btn-toolbar">
-            <a href="{{ route('site.details',0)}}" class="btn-default btn right" id="add">Incluir&nbsp;<i class="material-icons">add</i></a>
-            <span>&nbsp &nbsp</span>
-        </div>
-    </div>
+
 
     <div class="card" style="margin-top:60px" >
         <div class="card-body">

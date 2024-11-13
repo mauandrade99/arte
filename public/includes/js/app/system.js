@@ -4,13 +4,17 @@ iniciaSort();
 
 $('.dropdown-trigger').dropdown();
 
-    $('.modal').modal();
+$('.modal').modal();
 
- function back() {
+$('.datepicker').datepicker({
+    format: "dd-mm-yyyy"    
+});
+
+function back() {
     window.history.back();
- }
+}
 
- function preparePost(form,key,value) {
+function preparePost(form,key,value) {
 
     var hiddenField = document.createElement("input");
         hiddenField.setAttribute("type", "hidden");
@@ -52,7 +56,7 @@ function postForm(path, params, method) {
 
 }
 
- function doConfirm(modal, msg, yesFn, noFn) {
+function doConfirm(modal, msg, yesFn, noFn) {
     var confirmBox = $(modal);
 
     confirmBox.find(".yes").unbind( "click" );

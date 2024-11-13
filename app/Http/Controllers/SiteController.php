@@ -38,6 +38,7 @@ class SiteController extends Controller
                             ,'valor'=>null
                             ,'status'=>null
                             ,'datavenc'=>null
+                            ,'user_id'=>Auth::user()->id
                         ];
 
 
@@ -61,12 +62,7 @@ class SiteController extends Controller
         $cpcr = cpcr::where('id',$id)->delete();
 
 
-        if (Auth::user()->admin == '0')
-            return redirect()->route('site.cpcrUser',Auth::user()->id);
-        else
-            return redirect()->route('site.index');
-
-
+        return redirect()->route('site.cpcrUser',Auth::user()->id);
 
 
     }
@@ -83,7 +79,7 @@ class SiteController extends Controller
                 ,'descricao'=>$request->input('descricao')
                 ,'valor'=>$request->input('valor')
                 ,'status'=>$request->input('status')
-                ,'user_id'=>Auth::user()->id
+                ,'user_id'=>$request->input('user_id')
             ]);
 
 
@@ -98,10 +94,7 @@ class SiteController extends Controller
 
         }
 
-        if (Auth::user()->admin == '0')
-            return redirect()->route('site.cpcrUser',Auth::user()->id);
-        else
-            return redirect()->route('site.index');
+        return redirect()->route('site.cpcrUser',$request->input('user_id'));
 
     }
 

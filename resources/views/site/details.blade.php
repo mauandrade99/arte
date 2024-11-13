@@ -15,6 +15,8 @@
             <form method="POST"  enctype="multipart/form-data" action="{{ route('site.updatedetails',$lancamento->id) }}">
                 @csrf
                 @method('PUT')
+
+                <input name="user_id" type="text" id="user_id" class="form-control hide" readonly="true" value="{{$lancamento->user_id}}">
                 
                 <div class="form-group">
                     <label for="smallinput" class="col-sm-2 control-label">Lançamento</label>
@@ -105,17 +107,8 @@ window.onload = function() {
     $('select').formSelect();
 
 
-    $('.datepicker').datepicker({
-        format: "dd-mm-yyyy"    
-    });
-
-
 };
 
-function save() {
-
-    
-}
 
 </script>
 

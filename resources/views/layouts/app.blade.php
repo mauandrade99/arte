@@ -24,7 +24,7 @@
     </head>
     <body class="font-sans antialiased">
 
-        <div id="mymodal" class="modal">
+        <div id="mymodal" class="modal" >
             <div class="modal-content">
               <p class="message"></p>
             </div>

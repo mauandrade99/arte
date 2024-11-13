@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="(Auth::user()->admin == '0'?route('site.cpcrUser',Auth::user()->id):route('site.index'))" :active="(Auth::user()->admin == '0'?request()->routeIs('site.cpcrUser'):request()->routeIs('site.index'))">
+                    <x-nav-link :href="route('site.cpcrUser',Auth::user()->id)" :active="request()->routeIs('site.cpcrUser')">
                         CPCR
                     </x-nav-link>
                 </div>
