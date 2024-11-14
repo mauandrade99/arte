@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('valor', total: 13, places: 2)->nullable();
             $table->date('datavenc')->nullable();
             $table->set('status', ['pago', 'pendente'])->default('pendente');
+            $table->char('idativo',1)->default('1');
             $table->timestamps();
         });
     }

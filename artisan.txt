@@ -3,6 +3,11 @@
  
  php artisan migrate:fresh
  
+  php artisan db:seed
+  
+  php artisan make:policy CpcrPolicy
+  
+ 
  
  php artisan route:list
  
@@ -38,6 +43,10 @@ git push -u origin main
 
 atualizar 
 
+
+cd\laragon\www\arte
+git init
+git remote add origin https://github.com/mauandrade99/arte.git
 git add .
 git commit -m "second commit"
 git branch -M main

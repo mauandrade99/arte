@@ -5,26 +5,22 @@
 @endsection
 
 @section('content')
-    @if ( Auth::user()->admin == '1' )
+
         <div style="margin-top:40px;margin-left:40px" >
             <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Usuários <i class="material-icons right">expand_more</i></a>
-            <a href="{{ route('site.details',0)}}" class="btn" id="add">Incluir <i class="material-icons right">add</i></a>
+            <a href="{{ route('site.details',[0,(isset($cpcrs[0])?$cpcrs[0]->user_id:Auth::user()->id)])}}" class="btn" id="add">Incluir <i class="material-icons right">add</i></a>
         </div>
-    
+
         <!-- Dropdown Structure -->
         <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="{{ route('site.index')}}">TODOS</a></li>
             @foreach($usuariosMenu as $usuarioMenu)
             <li><a href="{{ route('site.cpcrUser',$usuarioMenu->id)}}">{{$usuarioMenu->name}}</a></li>
             @endforeach
         </ul>
-    @else
-        <div style="margin-top:40px;margin-left:40px" >
-            <a href="{{ route('site.details',0)}}" class="btn" id="add">Incluir <i class="material-icons right">add</i></a>
-        </div>
-    @endif
 
 
+    <input name="user_id" type="text" id="user_id" class="hide" readonly="true" value="{{(isset($cpcrs[0])?$cpcrs[0]->user_id:Auth::user()->id)}}">
+                         
 
     <div class="card" style="margin-top:60px" >
         <div class="card-body">
@@ -41,7 +37,7 @@
                         <th class="text-center sorttable_numeric">Valor</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Usuario</th>
-                        <th class="text-center"></th>
+                        <th class="text-center hide"></th>
                     </tr>
                     </thead>
 
@@ -49,7 +45,7 @@
                     @foreach ($cpcrs as $cpcr)
 
                         <tr id="clone" class="">
-                            <td class="pt-3-half"><a href="{{ route('site.details',$cpcr->id)}}"><i class="material-icons">visibility</i></a></td>
+                            <td class="pt-3-half"><a href="{{ route('site.details',[$cpcr->id,$cpcr->user_id])}}"><i class="material-icons">visibility</i></a></td>
                             <td id="ID" class="pt-3-half" contenteditable="false">{{Str::limit($cpcr->id,60)}}</td>
                             <td id="TITULO" class="pt-3-half" contenteditable="false">{{Str::limit($cpcr->titulo,60)}}</td>
                             <td id="DESCRICAO" class="pt-3-half" contenteditable="false">{{Str::limit($cpcr->descricao,60)}}</td>
@@ -57,7 +53,7 @@
                             <td id="VALOR" class="pt-3-half align-right" contenteditable="false">{{$cpcr->valor}}</td>
                             <td id="STATUS" class="pt-3-half" contenteditable="false">{{$cpcr->status}}</td>
                             <td id="USUARIO" class="pt-3-half" contenteditable="false">{{$cpcr->user->name}}</td>
-                            <td class="pt-3-half"><a href ='#' onclick = "excluir('{{ route('site.delete',$cpcr->id)}}')"><i class="material-icons">delete</i></a></td>
+                            <td class="pt-3-half hide"><a href ='#' onclick = "excluir('{{ route('site.delete',[$cpcr->id,$cpcr->user_id])}}')"><i class="material-icons">delete</i></a></td>
                         </tr>
 
                     @endforeach

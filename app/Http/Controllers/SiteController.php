@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Models\cpcr;
 use \App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class SiteController extends Controller
 {
@@ -17,7 +18,7 @@ class SiteController extends Controller
     public function index()
     {
         $titulo = 'CPCR';
-        $cpcrs = cpcr::paginate(10);
+        $cpcrs = cpcr::where('idativo','1')->paginate(10);
        
         return view('site.cpcr',compact('cpcrs','titulo'));
     }
@@ -25,7 +26,7 @@ class SiteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function details($id)
+    public function details($id,$user_id)
     {
         $titulo = 'CPCR';
 
@@ -37,8 +38,8 @@ class SiteController extends Controller
                             ,'descricao'=>null
                             ,'valor'=>null
                             ,'status'=>null
-                            ,'datavenc'=>null
-                            ,'user_id'=>Auth::user()->id
+                            ,'datavenc'=>Date('Y-m-d')
+                            ,'user_id'=>$user_id
                         ];
 
 
@@ -48,6 +49,8 @@ class SiteController extends Controller
 
             $lancamento = cpcr::where('id',$id)->first();
 
+            Gate::authorize('cpcrDetail',$lancamento);
+
         }
 
         return view('site.details',compact('lancamento','titulo'));
@@ -55,14 +58,17 @@ class SiteController extends Controller
 
     }
 
-    public function delete($id)
+    public function delete($id,$user_id)
     {
         $titulo = 'CPCR';
-       
-        $cpcr = cpcr::where('id',$id)->delete();
 
+        $cpcr = cpcr::where('id',$id)->update([
+            'idativo'=>'0'
+        ]);
 
-        return redirect()->route('site.cpcrUser',Auth::user()->id);
+        //Gate::authorize('cpcrDetail',$cpcr);
+
+        return redirect()->route('site.cpcrUser',$user_id);
 
 
     }
@@ -72,27 +78,41 @@ class SiteController extends Controller
 
         $params = $request->all();
 
+        $request->validate([
+            'titulo' => 'required',
+            'descricao' => 'required',
+            'valor' => 'required',
+            'status' => 'required',
+            'datavenc' => 'required',
+        ]);
+
         if ($id == 0 ) {
 
-            cpcr::create([
+            $cpcr =cpcr::create([
                 'titulo'=>$request->input('titulo')
                 ,'descricao'=>$request->input('descricao')
                 ,'valor'=>$request->input('valor')
                 ,'status'=>$request->input('status')
                 ,'user_id'=>$request->input('user_id')
+                ,'datavenc'=>Date('Y-m-d',strtotime($request->input('datavenc')))
             ]);
 
 
         } else {
 
-            cpcr::where('id',$id)->update([
+            $cpcr = cpcr::where('id',$id)->update([
                 'titulo'=>$request->input('titulo')
                 ,'descricao'=>$request->input('descricao')
                 ,'valor'=>$request->input('valor')
                 ,'status'=>$request->input('status')
+                ,'user_id'=>$request->input('user_id')
+                ,'datavenc'=>Date('Y-m-d',strtotime($request->input('datavenc')))
+                ,'idativo'=>$request->input('idativo')
             ]);
 
         }
+
+        //Gate::authorize('cpcrDetail',$cpcr);
 
         return redirect()->route('site.cpcrUser',$request->input('user_id'));
 
@@ -105,7 +125,8 @@ class SiteController extends Controller
         $name = User::where('id',$id)->first()->name;
 
         $titulo = 'CPCR' . ' - ' . $name;
-        $cpcrs = cpcr::where('user_id',$id)->paginate(10);
+        
+        $cpcrs = cpcr::where('user_id',$id)->where('idativo','1')->paginate(10);
 
         return view('site.cpcr',compact('cpcrs','titulo'));
 

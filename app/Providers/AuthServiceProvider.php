@@ -4,6 +4,10 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Cpcr;
+use App\Models\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,6 +25,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('cpcrDetail',function(User $user,Cpcr $cpcr) {
+
+
+                return ($user->id == $cpcr->user_id  || Auth::user()->admin == '1');
+
+        });
     }
 }

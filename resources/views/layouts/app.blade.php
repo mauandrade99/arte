@@ -12,7 +12,7 @@
         <link rel='stylesheet' type='text/css' href='/includes/plugins/form-select2/select2.css' /> 
         <link rel='stylesheet' type='text/css' href='/includes/css/flickity.css' /> 
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="/includes/css/materialize.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!-- Fonts -->
@@ -24,15 +24,6 @@
     </head>
     <body class="font-sans antialiased">
 
-        <div id="mymodal" class="modal" >
-            <div class="modal-content">
-              <p class="message"></p>
-            </div>
-            <div class="modal-footer">
-              <span class="yes btn btn-primary">Sim</span>
-			        <span class="no btn btn-primary">Não</span>
-            </div>
-          </div>
 
         @include('layouts.navigation')
 
